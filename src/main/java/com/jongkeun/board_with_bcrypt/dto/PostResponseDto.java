@@ -11,12 +11,14 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PostResponseDto {
+    private Long id;
     private String title;
     private String content;
     private UserResponseDto author;
 
     public static PostResponseDto fromEntity(Post post) {
         return new PostResponseDto(
+                post.getId(),
                 post.getTitle(),
                 post.getContent(),
                 UserResponseDto.fromEntity(post.getAuthor())
